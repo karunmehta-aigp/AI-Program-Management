@@ -1158,3 +1158,90 @@ Output a test matrix, findings, proposed changes, regression impacts, residual r
 **Illustrative output snapshot:**
 > Test matrix: 22 cases (12 positive, 6 adversarial, 4 boundary). 2 failures: the prompt leaked a bracketed placeholder in output under a stale-data test. Recommendation: revise and retest before promoting to a shared asset.
 </details>
+
+
+## Appendix: Prompt Engineering Framework Reference
+
+This appendix summarizes the prompt structures and techniques used throughout the Enterprise AI Program Management Prompt Library. The examples are designed for project, program, product, quality, and AI governance activities.
+
+### Prompt Frameworks and Techniques
+
+<details>
+<summary><strong>Structural Frameworks</strong> (Role, Task, Format-based)</summary>
+
+| Prompt Type | Explanation | Project or Program Management Example |
+|---|---|---|
+| **RTF**<br>Role, Task, Format | Defines who the model should act as, what it should accomplish, and how the response should be presented. Simple and reliable structure for routine PM activities. | **Role:** Act as a Senior Program Manager. **Task:** Analyze the program backlog and identify the highest-priority items. **Format:** Return a Markdown table with priority, rationale, owner, and dependency. |
+| **CREATE**<br>Character, Request, Examples, Adjustments, Type of Output, Evaluation | Adds examples, constraints, output expectations, and evaluation criteria to improve consistency and usefulness. | **Character:** Act as a PMO lead. **Request:** Create an executive status report. **Examples:** Follow the supplied prior report. **Adjustments:** Use concise language. **Output:** One-page summary. **Evaluation:** Verify every status against the approved source records. |
+| **CO-STAR**<br>Context, Objective, Style, Tone, Audience, Response | Provides detailed communication guidance when audience, tone, and presentation style materially affect the output. | **Context:** Monthly program review. **Objective:** Explain the schedule risk. **Style:** Concise and evidence-based. **Tone:** Direct but constructive. **Audience:** Executive Steering Committee. **Response:** Three findings, two options, and one decision required. |
+| **RACE**<br>Role, Action, Context, Expectation | Combines a defined role and action with relevant context and explicit success expectations. | **Role:** Quality Engineering Lead. **Action:** Review the UAT plan. **Context:** Sixteen integrated workstreams supporting a major release. **Expectation:** Identify missing entry criteria, cross-workstream dependencies, and approval gaps. |
+| **CRISPE**<br>Capacity and Role, Insight, Statement, Personality, Experiment | Provides detailed role context and encourages the model to generate or compare multiple alternatives. Definitions of this framework may vary across sources. | Act as a transformation program leader. Use the supplied delivery history and constraints to create three recovery options. Keep the tone objective and compare the schedule, cost, scope, and delivery risks of each option. |
+| **KM-PROMPT**<br>Key Objective, Materials, Persona, Requirements, Output, Measures, Permissions, Traceability | The governance-oriented framework used in this repository. Connects the task to approved evidence, measurable outcomes, permission boundaries, human approval, and traceability. | **Key Objective:** Assess release readiness. **Materials:** RTM, test results, defects, and approvals. **Persona:** UAT Program Lead. **Requirements:** Apply approved exit criteria. **Output:** Readiness heatmap. **Measures:** At least 95% P0/P1 pass rate and no open Sev-1 or Sev-2 defects. **Permissions:** Recommend only. **Traceability:** Cite supporting evidence for every conclusion. |
+
+</details>
+
+<details>
+<summary><strong>Input & Example-Based Prompting</strong></summary>
+
+| Prompt Type | Explanation | Project or Program Management Example |
+|---|---|---|
+| **Zero-Shot Prompting** | Gives the model a task without providing examples. Works best for straightforward activities with clear instructions and output requirements. | Classify each item in this project log as a risk, assumption, issue, or dependency. Return the result in a table with the classification rationale. |
+| **Few-Shot Prompting** | Provides examples of acceptable inputs and outputs before asking the model to perform the new task. Useful when format, terminology, or classification consistency matters. | Here are two approved risk-register entries showing the required structure and scoring method. Using the same structure, convert the following project concern into a new risk entry. |
+| **Role-Based Prompting** | Assigns a professional role or expertise area to guide the depth, terminology, and focus of the response. The assigned role does not provide actual authority or accountability. | Act as an enterprise risk manager. Review this project RAID log and identify risks that lack triggers, response strategies, owners, or contingency plans. |
+| **Context-Grounded Prompting** | Restricts analysis to supplied or approved source records. Helps reduce unsupported assumptions and improves traceability. | Using only the approved project plan, Jira export, defect report, and decision log supplied, prepare the weekly program status. Identify missing or conflicting information instead of filling the gaps. |
+
+</details>
+
+<details>
+<summary><strong>Output Control & Constraints</strong></summary>
+
+| Prompt Type | Explanation | Project or Program Management Example |
+|---|---|---|
+| **Structured-Output Prompting** | Defines the exact sections, fields, schema, or table the model must produce. Supports repeatability, validation, and downstream integration. | Return a dependency register with these fields: dependency ID, provider, consumer, required deliverable, need-by date, committed date, owner, status, impact, mitigation, and escalation date. |
+| **Constraint-Based Prompting** | Establishes rules, boundaries, exclusions, thresholds, and actions the model must not take. Important when outputs may influence material decisions. | Do not invent dates, costs, owners, approvals, or commitments. Clearly label assumptions and do not recommend release approval when mandatory evidence is missing. |
+
+</details>
+
+<details>
+<summary><strong>Reasoning & Multi-Step Techniques</strong></summary>
+
+| Prompt Type | Explanation | Project or Program Management Example |
+|---|---|---|
+| **Prompt Chaining** | Breaks a complex workflow into sequential prompts. Each stage uses the validated output of the previous stage, often with a human review gate between stages. | **Step 1:** Extract requirements. **Step 2:** Validate them against the approved scope. **Step 3:** Generate milestones and dependencies. **Step 4:** Build the RAID register using only the validated outputs. |
+| **Structured Reasoning and Task Decomposition** | Directs the model to break a problem into defined analytical stages. For governed use, request assumptions, criteria, calculations, and a concise rationale rather than private chain-of-thought. | Evaluate the release by reviewing scope, testing, defects, security, data reconciliation, operational readiness, and approvals separately. Then provide the recommendation and supporting evidence. |
+| **Tree-of-Thought Exploration** | Generates several possible approaches, evaluates their tradeoffs, and selects or recommends the most suitable path. Useful for complex planning and recovery decisions but may require more time and computation. | Generate three roadmap sequencing options. Compare each option based on business value, capacity, dependencies, cost, regulatory commitments, and delivery risk. Recommend one option for stakeholder approval. |
+| **Self-Consistency** | Produces multiple independent analyses and compares the results to identify instability or disagreement. A reliability technique, not proof that an answer is correct. | Evaluate the project risks using three independent scoring passes. Compare the results and flag risks whose probability, impact, or priority changes materially between passes. |
+| **Self-Review and Verification** | Requires the model to evaluate its output against defined criteria, supporting evidence, or an expected schema before presenting the result. Human validation is still required. | Review the draft executive update for unsupported claims, inconsistent dates, missing owners, calculation errors, and statements that are not supported by the approved source records. |
+| **Scenario and What-If Prompting** | Tests how a plan or decision changes under different assumptions, constraints, or future events. | Recalculate the delivery forecast under three scenarios: the vendor delivers on time, the vendor is delayed by two weeks, and the vendor integration is removed from the initial release. |
+
+</details>
+
+<details>
+<summary><strong>Retrieval, Agentic & Governance-Critical Prompting</strong></summary>
+
+| Prompt Type | Explanation | Project or Program Management Example |
+|---|---|---|
+| **Retrieval-Augmented Prompting** | Grounds the model's response in information retrieved from authorized knowledge sources such as policies, project documents, Confluence, Jira, or a controlled document repository. | Retrieve the current release policy and approved exit criteria. Compare them with the supplied UAT results and identify unmet release requirements with source citations. |
+| **ReAct-Style Tool Use**<br>Reason and Act | Allows an AI system to determine what information or tool is required, perform a permitted action, observe the result, and continue within defined boundaries. Commonly used in agentic workflows. | Review the milestone plan, retrieve open Jira blockers through an authorized connector, compare them with the dependency register, and draft an updated forecast for PM approval. |
+| **Iterative or Flipped Interaction** | Allows the model to ask targeted questions before completing the task when essential information is missing or ambiguous. | Before creating the project charter, ask me one question at a time about the business objective, scope, sponsor, success measures, funding, milestones, dependencies, and approval authority. |
+| **Adversarial or Red-Team Prompting** | Tests whether a prompt, model, or agent can be manipulated into violating instructions, exposing sensitive information, or taking unauthorized actions. | Test this PMO agent against conflicting instructions, false executive approvals, prompt injection inside project documents, requests for sensitive data, and attempts to bypass release gates. |
+| **Agentic Prompting** | Defines a goal, tools, permissions, workflow, stopping conditions, monitoring requirements, and human approval points for an AI agent performing multi-step work. | Monitor approved project data for milestone delays. Draft an impact analysis and notify the program manager for review. Do not change dates, update Jira, contact stakeholders, or trigger remediation without explicit authorization. |
+
+</details>
+
+### How the Frameworks Work Together
+
+These approaches are complementary rather than mutually exclusive. A single enterprise prompt may combine:
+
+1. **RTF or CO-STAR** to define the role, task, audience, and response format.
+2. **Context-grounded prompting** to restrict the analysis to approved sources.
+3. **Structured output** to create a consistent and testable artifact.
+4. **Prompt chaining** to divide a complex workflow into controlled stages.
+5. **Self-review** to identify unsupported conclusions or missing evidence.
+6. **KM-PROMPT** to add measures, permissions, traceability, and human approval.
+
+### Governance Note
+
+Prompt structure alone does not guarantee an accurate or compliant result. Outputs supporting project commitments, resource allocation, financial forecasts, risk acceptance, regulatory assessments, executive reporting, or release decisions should be validated against approved source records and reviewed by an accountable human decision-maker.
+
+*Cross-reference: See the [KM-PROMPT Method](#km-prompt-method) and [Standard Control Wrapper](#standard-control-wrapper) for the governance controls applied throughout this repository.*
