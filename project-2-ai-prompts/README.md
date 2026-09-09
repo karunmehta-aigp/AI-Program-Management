@@ -193,7 +193,8 @@ Every prompt passes these 11 validation checks:
 | PM-21 | Release Go/No-Go | Release | Evidence-based release recommendation |
 | PM-22 | Project Recovery Plan | Recovery | Stabilization and recovery plan |
 | PM-23 | Postmortem and Lessons Learned | Closure | Blameless postmortem |
-| PM-24 | Roadmap Creation | Roadmap Prioritization | Portfolio | Prioritized roadmap |
+| PM-24 | Roadmap Prioritization | Portfolio | Prioritized roadmap |
+| PM-24B | Quarterly Program Roadmap Visualization | Portfolio | Timeline roadmap, data table, Gantt chart, validation report |
 | PM-25 | Meeting-to-Action Converter | Execution | Decisions and action register |
 | AI-PM-01 | AI Use-Case Intake and Risk Triage | AI Governance | AI intake recommendation |
 | AI-PM-02 | GenAI/RAG Delivery Readiness | AI Delivery | Evaluation and release plan |
@@ -865,6 +866,174 @@ Do not let a mathematical score replace strategic judgment. Highlight low-confid
 
 **Illustrative output snapshot:**
 > Method: WSJF. Top-ranked item scores 18.2 (cost of delay 91 ÷ job size 5). 2 items marked mandatory (regulatory) regardless of score. Now/Next/Later split: 4 items in Now, 6 in Next.
+</details>
+
+<details>
+<summary><strong>PM-24B · Quarterly Program Roadmap Visualization</strong></summary>
+
+**Use when:** Leadership needs a visual, timeline-based roadmap showing workstreams, owners, milestones, dependencies, and risk across quarters — distinct from PM-24's prioritization scoring, this prompt builds the delivery timeline itself.
+
+```
+Act as a Senior Program Manager and Portfolio Roadmap Specialist.
+
+Using the project information provided below, create a professional quarterly program roadmap similar to the attached example.
+
+OBJECTIVE
+
+Create a timeline-based roadmap that clearly shows:
+
+* Quarterly timeline: Q1, Q2, Q3, and Q4
+* Program workstreams
+* Workstream owners
+* Initiatives and deliverables
+* Start and completion periods
+* Key milestones and decision points
+* Dependencies between activities
+* Risks, blockers, and schedule conflicts
+* Current delivery status
+
+INPUT DATA
+
+Program name: [Enter program name]
+Program objective: [Enter business objective]
+Roadmap period: [Enter start and end dates]
+Workstreams: [Enter workstream names]
+Owners: [Enter owner for each workstream]
+Initiatives and deliverables: [Paste backlog, project plan, Jira export, Excel data, or initiative list]
+Known milestones: [Enter milestones]
+Known dependencies: [Enter dependencies]
+Known risks or constraints: [Enter risks, resource constraints, regulatory dates, or fixed deadlines]
+Status date: [Enter reporting date]
+
+ROADMAP STRUCTURE
+
+Organize the roadmap using the following hierarchy:
+
+1. Program-level milestones
+2. Workstream
+3. Workstream owner
+4. Initiative or deliverable
+5. Start date
+6. Target completion date
+7. Dependency
+8. Status
+9. Risk or blocker
+
+Use one color for each workstream. Display initiatives as horizontal timeline bars and milestones as diamond or star markers.
+
+ANALYSIS REQUIRED
+
+Before creating the roadmap:
+
+1. Review all supplied source information.
+2. Identify missing owners, dates, milestones, and dependencies.
+3. Detect duplicate or overlapping initiatives.
+4. Identify schedule conflicts and unrealistic sequencing.
+5. Determine which activities are on the critical path.
+6. Flag milestones that may be affected by delayed dependencies.
+7. Do not invent missing information.
+8. Mark unavailable information as "TBD."
+9. Separate confirmed facts from assumptions.
+10. Recommend corrections without automatically changing approved dates.
+
+OUTPUT 1: EXECUTIVE SUMMARY
+
+Provide:
+
+* Program objective
+* Roadmap period
+* Number of workstreams
+* Key milestones
+* Critical dependencies
+* Major risks
+* Decisions required from leadership
+
+OUTPUT 2: ROADMAP DATA TABLE
+
+Create a table with these columns:
+
+| Workstream | Owner | Initiative/Deliverable | Start Date | End Date | Quarter | Milestone | Dependency | Status | Risk/Blocker | Confidence |
+|---|---|---|---|---|---|---|---|---|---|---|
+
+Use these status values only: Not Started, On Track, At Risk, Blocked, Completed.
+Use these confidence values only: High, Medium, Low.
+
+OUTPUT 3: VISUAL ROADMAP
+
+Create a quarterly timeline roadmap with:
+
+* Q1, Q2, Q3, and Q4 across the top
+* Workstreams grouped vertically
+* Owners shown under each workstream
+* Initiatives displayed as timeline bars
+* Program and workstream milestones clearly marked
+* Dependency arrows between related activities
+* Status indicators for on-track, at-risk, blocked, and completed work
+* A legend explaining colors, milestone symbols, dependencies, and statuses
+
+If you cannot generate the visual directly, provide the roadmap as a Mermaid Gantt chart and an import-ready CSV table.
+
+OUTPUT 4: VALIDATION REPORT
+
+List:
+
+* Missing information
+* Duplicate initiatives
+* Date conflicts
+* Resource or owner conflicts
+* Dependency conflicts
+* Milestones without supporting deliverables
+* Deliverables without milestones
+* Critical-path concerns
+* Recommended PM actions
+
+GOVERNANCE REQUIREMENT
+
+Treat the supplied project records as the approved source. Do not change scope, owners, dates, status, or milestones without human approval. Clearly identify every proposed change and include the reason, schedule impact, dependency impact, and required approver.
+
+PROJECT INFORMATION
+
+[PASTE YOUR PROJECT DATA HERE]
+```
+
+**Illustrative output snapshot:**
+
+> **Output 1 — Executive Summary**
+> Program: AI Claims Assistant Rollout. Objective: reduce manual claims triage time enterprise-wide. Roadmap period: Q1–Q4 2027. 4 workstreams (Data, AI/Engineering, Governance, Adoption). Key milestone: Pilot go/no-go, end of Q2. Critical dependency: Data authorization must close before Q2 build work starts. Major risk: Legal review of source data is currently TBD with no confirmed date. Decision needed from leadership: whether to hold the Q2 milestone or approve a conditional start.
+>
+> **Output 2 — Roadmap Data Table**
+>
+> | Workstream | Owner | Initiative/Deliverable | Start Date | End Date | Quarter | Milestone | Dependency | Status | Risk/Blocker | Confidence |
+> |---|---|---|---|---|---|---|---|---|---|---|
+> | Data | J. Alvarez | Data authorization sign-off | Jan 6 | TBD | Q1 | Yes | None | Blocked | Legal review date unconfirmed | Low |
+> | AI/Engineering | M. Chen | Retrieval pipeline build | Feb 3 | Mar 28 | Q1–Q2 | No | Data authorization | Not Started | Depends on blocked item above | Medium |
+> | Governance | R. Osei | Evaluation plan approval | Mar 1 | Mar 15 | Q1 | Yes | None | On Track | None | High |
+> | Adoption | T. Nguyen | Pilot user training | Apr 1 | Apr 20 | Q2 | No | Retrieval pipeline build | Not Started | Sequencing depends on Eng finishing on time | Medium |
+>
+> **Output 3 — Visual Roadmap (Mermaid Gantt)**
+> ```mermaid
+> gantt
+>     title AI Claims Assistant Rollout — Quarterly Roadmap
+>     dateFormat  YYYY-MM-DD
+>     axisFormat  %b
+>     section Data
+>     Data authorization sign-off (BLOCKED) :crit, data1, 2027-01-06, 45d
+>     section AI/Engineering
+>     Retrieval pipeline build      :eng1, after data1, 55d
+>     section Governance
+>     Evaluation plan approval      :milestone, gov1, 2027-03-15, 0d
+>     section Adoption
+>     Pilot user training           :adopt1, after eng1, 20d
+> ```
+>
+> **Output 4 — Validation Report**
+> - Missing information: End date for data authorization is TBD, pending Legal.
+> - Date conflict: none detected among confirmed dates.
+> - Dependency conflict: Pilot user training is sequenced after a blocked upstream item — recommend flagging as at-risk, not "Not Started."
+> - Critical-path concern: Data authorization is the single blocking item for the entire Q1–Q2 sequence; recommend daily follow-up rather than weekly.
+> - Recommended PM action: escalate the Legal review date to the sponsor before the next steering update, since it is the root blocker behind three downstream items.
+
+*All names, dates, and figures above are fictional illustrative examples — not real delivery evidence.*
 </details>
 
 ### 6. AI Program Delivery and Governance
