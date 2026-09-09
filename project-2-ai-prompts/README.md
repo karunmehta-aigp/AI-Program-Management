@@ -1005,10 +1005,10 @@ PROJECT INFORMATION
 >
 > | Workstream | Owner | Initiative/Deliverable | Start Date | End Date | Quarter | Milestone | Dependency | Status | Risk/Blocker | Confidence |
 > |---|---|---|---|---|---|---|---|---|---|---|
-> | Data | J. Alvarez | Data authorization sign-off | Jan 6 | TBD | Q1 | Yes | None | Blocked | Legal review date unconfirmed | Low |
-> | AI/Engineering | M. Chen | Retrieval pipeline build | Feb 3 | Mar 28 | Q1–Q2 | No | Data authorization | Not Started | Depends on blocked item above | Medium |
-> | Governance | R. Osei | Evaluation plan approval | Mar 1 | Mar 15 | Q1 | Yes | None | On Track | None | High |
-> | Adoption | T. Nguyen | Pilot user training | Apr 1 | Apr 20 | Q2 | No | Retrieval pipeline build | Not Started | Sequencing depends on Eng finishing on time | Medium |
+> | Data | Matthew  | Data authorization sign-off | Jan 6 | TBD | Q1 | Yes | None | Blocked | Legal review date unconfirmed | Low |
+> | AI/Engineering | Mohan | Retrieval pipeline build | Feb 3 | Mar 28 | Q1–Q2 | No | Data authorization | Not Started | Depends on blocked item above | Medium |
+> | Governance | Karun Mehta | Evaluation plan approval | Mar 1 | Mar 15 | Q1 | Yes | None | On Track | None | High |
+> | Adoption | T Rice | Pilot user training | Apr 1 | Apr 20 | Q2 | No | Retrieval pipeline build | Not Started | Sequencing depends on Eng finishing on time | Medium |
 >
 > **Output 3 — Visual Roadmap (Mermaid Gantt)**
 > ```mermaid
