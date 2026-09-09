@@ -80,7 +80,7 @@ Every prompt follows the same validated structure:
 - **Tags**: searchable, keywords, here
 - **Complexity**: simple | intermediate | advanced
 - **Interaction**: single-shot | conversational | iterative
-- **Models**: Claude 3+, GPT-4+
+- **Models**: Claude 6+, GPT-5+
 
 ## Overview
 2-3 sentences explaining what the prompt does and who it's for.
