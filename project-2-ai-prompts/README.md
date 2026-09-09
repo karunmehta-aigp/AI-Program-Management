@@ -193,7 +193,7 @@ Every prompt passes these 11 validation checks:
 | PM-21 | Release Go/No-Go | Release | Evidence-based release recommendation |
 | PM-22 | Project Recovery Plan | Recovery | Stabilization and recovery plan |
 | PM-23 | Postmortem and Lessons Learned | Closure | Blameless postmortem |
-| PM-24 | Roadmap Prioritization | Portfolio | Prioritized roadmap |
+| PM-24 | Roadmap Creation | Roadmap Prioritization | Portfolio | Prioritized roadmap |
 | PM-25 | Meeting-to-Action Converter | Execution | Decisions and action register |
 | AI-PM-01 | AI Use-Case Intake and Risk Triage | AI Governance | AI intake recommendation |
 | AI-PM-02 | GenAI/RAG Delivery Readiness | AI Delivery | Evaluation and release plan |
