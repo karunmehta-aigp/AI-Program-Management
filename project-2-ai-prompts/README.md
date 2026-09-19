@@ -3,7 +3,7 @@
 **Author:** Karun Mehta · AIGP · PMP
 **Tagline:** Plan with evidence. Govern decisions. Deliver outcomes.
 
-> **Portfolio and educational use.** These prompts are reusable starting points, not substitutes for professional judgment, organizational policy, legal review, financial approval, security review, or accountable human decision-making. Do not enter confidential, regulated, personal, or proprietary information into an AI tool unless the tool and use are explicitly authorized.
+> **Portfolio and educational use.** These prompts are reusable starting points, not substitutes for professional judgment, organizational policy, legal review, financial approval, security review, or accountable human decision-making. Do not enter confidential, regulated, personal, or proprietary information into an AI tool unless the tool and use are explicitly authorized
 
 <img width="1122" height="1402" alt="image" src="https://github.com/user-attachments/assets/233d4e5d-1b0f-493b-9bdd-3abfdbc3ba16" />
 
