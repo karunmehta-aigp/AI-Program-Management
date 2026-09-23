@@ -18,9 +18,13 @@ ________________________________________________________________________________
 
 _______________________________________________________________________________________________________________________________________
 
+
+
 <img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/0f59b8f7-aba6-47c9-a260-0789f1100e17" />
 
 
+
+____________________________________________________________________________________________________________________________________________
 
 
 AI Program Management is about much more than managing scope, schedule, and budget. Success depends on asking the right questions, understanding the type of AI initiative, establishing the right governance, managing AI-specific risks, and defining meaningful success metrics from the very beginning.
