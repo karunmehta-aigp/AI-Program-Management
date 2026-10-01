@@ -4,7 +4,7 @@
 
 > **This page is a guide, not an installable skill.** It teaches how to build a skill for the [AI-PMO Skills catalog](https://github.com/karunmehta-aigp/AI-Program-Management/blob/main/project-3-ai-pmo-skills/README.md); it doesn't begin with its own YAML frontmatter, so it can't be uploaded or activated on its own. If you're looking for an actual skill to install, see the [Skills Matrix](https://github.com/karunmehta-aigp/AI-Program-Management/blob/main/project-3-ai-pmo-skills/README.md#skills-matrix).
 
-> **Status: I am still building these skills.** This page documents my working method for turning a repeatable AI-PMO workflow into a proper skill — it is a personal reference for how I approach the process, not a claim that the skills catalogued in this project have already been built, tested, or deployed.
+> **Status: I am still building these skills.** This page documents my working method for turning a repeatable AI-PMO workflow into a proper skill — it is a personal reference for how I approach the process, not a claim that the skills catalogued in this project have already been built, tested, or deployed
 
 ---
 
