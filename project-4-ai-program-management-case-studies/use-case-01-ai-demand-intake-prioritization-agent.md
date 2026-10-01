@@ -3,7 +3,7 @@
 
 <img width="1548" height="2487" alt="image" src="https://github.com/user-attachments/assets/cab90030-30c6-4c77-8cfd-b45183a70e5d" />
 
-# AI-Assisted Enterprise Demand Intake, Prioritization & Capacity Planning
+# AI-Assisted Enterprise Demand Intake, Prioritization & Capacity Planning for the Teams
 ### From 100+ Competing Demands to a Capacity-Aware Portfolio — with AI Assistance and Human Decision Authority
 
 **System:** `ORG-AI-016`
